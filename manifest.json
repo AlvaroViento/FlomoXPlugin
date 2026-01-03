@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "FlomoX",
+  "version": "2.2.0",
+  "description": "Save tweets，substack articles and rednote to Flomo directly from the timeline",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png"
+  },
+  "action": {
+    "default_title": "Flomo Settings",
+    "default_popup": "popup/popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://flomoapp.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://twitter.com/*", 
+        "https://x.com/*",
+        "https://www.xiaohongshu.com/*",
+        "https://xiaohongshu.com/*",
+        "https://*.substack.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
